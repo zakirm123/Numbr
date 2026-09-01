@@ -116,7 +116,7 @@ function generateQuestion() {
 }
 
 function checkAnswer() {
-    if (timeLeft <= 0 && currentGrade !== 1) return; // Block answers if time ran out
+    if (timeLeft <= 0 && currentGrade !== 1) return; 
     
     const userAnswer = parseInt(answerInput.value);
     if (isNaN(userAnswer)) return;
@@ -124,16 +124,37 @@ function checkAnswer() {
     if (userAnswer === currentAnswer) {
         score++;
         scoreElement.innerText = score;
-        bubble.innerText = "🦅 Archie: Correct! Great job!";
-        // Reset the clock for the next question to give them fresh time
+        
+        // --- STREAK LOGIC BLOCK ---
+        if (!streakActiveToday) {
+            streakActiveToday = true;
+            streakCount++;
+            
+            // Save data locally
+            localStorage.setItem("numbr_streak_count", streakCount);
+            localStorage.setItem("numbr_last_streak_date", new Date().toDateString());
+            
+            // UI Updates
+            document.getElementById("streak-count").innerText = streakCount;
+            document.getElementById("streak-flame").className = "flame-lit";
+            
+            // Archie chooses a random motivational phrase!
+            const randomPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
+            bubble.innerText = randomPhrase;
+        } else {
+            bubble.innerText = "🦅 Archie: Correct! Great job!";
+        }
+        // ---------------------------
+        
         startTimer();
-        setTimeout(generateQuestion, 1000);
+        setTimeout(generateQuestion, 1200);
     } else {
         bubble.innerText = `🦅 Archie: Not quite! The right answer was ${currentAnswer}. Let's try another!`;
         startTimer();
         setTimeout(generateQuestion, 1800);
     }
 }
+
 
 function endGameByTimeout() {
     clearInterval(timerInterval);
@@ -153,3 +174,36 @@ function resetGame() {
     gradeScreen.classList.remove("hidden");
     bubble.innerText = "Hi! I'm Archie! Which grade are you in?";
 }
+function loadStreak() {
+    const savedStreak = localStorage.getItem("numbr_streak_count");
+    const lastDateString = localStorage.getItem("numbr_last_streak_date");
+    
+    if (savedStreak) {
+        streakCount = parseInt(savedStreak);
+    }
+    
+    const todayString = new Date().toDateString();
+    
+    if (lastDateString === todayString) {
+        // Player already earned their streak today
+        streakActiveToday = true;
+        document.getElementById("streak-flame").className = "flame-lit";
+    } else if (lastDateString) {
+        // Check if they missed a day to reset the streak
+        const lastDate = new Date(lastDateString);
+        const today = new Date(todayString);
+        const differenceInTime = today.getTime() - lastDate.getTime();
+        const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+        
+        if (differenceInDays > 1.5) { 
+            // Missed more than a day, reset streak back to 0
+            streakCount = 0;
+            localStorage.setItem("numbr_streak_count", 0);
+        }
+    }
+    
+    document.getElementById("streak-count").innerText = streakCount;
+}
+
+// Automatically load the streak data whenever the webpage loads
+window.onload = loadStreak;
