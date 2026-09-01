@@ -1,0 +1,86 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.mascot-container {
+    margin-bottom: 30px;
+}
+
+.archie-avatar {
+    font-size: 60px;
+    animation: bounce 2s infinite alternate;
+}
+
+.bubble {
+    background: #f1f1f1;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-grade { background-color: #4A90E2; color: white; }
+.btn-submit { background-color: #2ECC71; color: white; }
+.btn-back { background-color: #95A5A6; color: white; font-size: 0.9rem; margin-top: 20px;}
+
+.question-text {
+    font-size: 2rem;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    padding: 12px;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
