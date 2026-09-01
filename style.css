@@ -110,3 +110,31 @@ input[type="number"] {
     0% { transform: translateX(-2px); }
     100% { transform: translateX(2px); }
 }
+.streak-board {
+    background: #ffffff;
+    border: 2px solid #ddd;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Unlit flame style */
+.flame-unlit {
+    filter: grayscale(100%) opacity(40%);
+    display: inline-block;
+}
+
+/* Lit flame style with glowing animation */
+.flame-lit {
+    filter: none;
+    display: inline-block;
+    animation: flameGlow 0.6s infinite alternate;
+}
+
+@keyframes flameGlow {
+    0% { transform: scale(1); filter: drop-shadow(0 0 2px #f39c12); }
+    100% { transform: scale(1.15); filter: drop-shadow(0 0 8px #e74c3c); }
+}
