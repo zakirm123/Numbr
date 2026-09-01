@@ -15,10 +15,15 @@
             <div class="bubble" id="archie-bubble">Hi! I'm Archie! Which grade are you in?</div>
         </div>
 
-                <!-- Gameplay Screen -->
+        <!-- Gameplay Screen -->
         <div id="game-screen" class="screen hidden">
             <div class="game-stats">
                 <div class="score-board">Score: <span id="score">0</span></div>
+                <!-- Added Streak Flame Counter -->
+                <div id="streak-container" class="streak-board">
+                    <span id="streak-flame" class="flame-unlit">🔥</span> 
+                    <span id="streak-count">0</span> Days
+                </div>
                 <div id="timer-container" class="timer-board hidden">Time: <span id="timer">30</span>s</div>
             </div>
             <div id="question" class="question-text">Question goes here</div>
@@ -26,7 +31,6 @@
             <button class="btn btn-submit" onclick="checkAnswer()">Submit</button>
             <button class="btn btn-back" onclick="resetGame()">Change Grade</button>
         </div>
-
 
         <!-- Gameplay Screen -->
         <div id="game-screen" class="screen hidden">
