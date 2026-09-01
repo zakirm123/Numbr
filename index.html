@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbr - Math with Archie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- Mascot Header -->
+        <div class="mascot-container">
+            <div class="archie-avatar">🦅</div>
+            <div class="bubble" id="archie-bubble">Hi! I'm Archie! Which grade are you in?</div>
+        </div>
+
+        <!-- Grade Selection Screen -->
+        <div id="grade-screen" class="screen">
+            <button class="btn btn-grade" onclick="startGame(1)">Grade 1</button>
+            <button class="btn btn-grade" onclick="startGame(2)">Grade 2</button>
+            <button class="btn btn-grade" onclick="startGame(3)">Grade 3+</button>
+        </div>
+
+        <!-- Gameplay Screen -->
+        <div id="game-screen" class="screen hidden">
+            <div class="score-board">Score: <span id="score">0</span></div>
+            <div id="question" class="question-text">Question goes here</div>
+            <input type="number" id="answer-input" placeholder="Your answer...">
+            <button class="btn btn-submit" onclick="checkAnswer()">Submit</button>
+            <button class="btn btn-back" onclick="resetGame()">Change Grade</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
