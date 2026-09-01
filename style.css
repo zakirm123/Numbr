@@ -84,3 +84,29 @@ input[type="number"] {
     0% { transform: translateY(0); }
     100% { transform: translateY(-10px); }
 }
+.game-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.timer-board {
+    background: #f39c12;
+    color: white;
+    padding: 3px 12px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.timer-board.urgent {
+    background: #e74c3c;
+    animation: shake 0.2s infinite alternate;
+}
+
+@keyframes shake {
+    0% { transform: translateX(-2px); }
+    100% { transform: translateX(2px); }
+}
