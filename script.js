@@ -1,3 +1,14 @@
+let streakCount = 0;
+let streakActiveToday = false;
+
+const motivationalPhrases = [
+    "🦅 Archie: 'Fantastic work! Keep pushing your boundaries!'",
+    "🦅 Archie: 'Brilliant! You are sharper than an eagle's eye today!'",
+    "🦅 Archie: 'Incredible! Every correct answer makes your brain stronger!'",
+    "🦅 Archie: 'Boom! You've got the mind of a math champion!'",
+    "🦅 Archie: 'Sensational! Your math skills are soaring high today!'"
+];
+
 let currentGrade = 1;
 let currentAnswer = 0;
 let score = 0;
